@@ -13,16 +13,12 @@
   length("hallo") -> 5
 */
 int length(char str[]){
-  int i;
   int length = 0;
 
-  for(i=0;i<sizeof(str);i++){
-    if(str[i]==0){
-      if(i != 0) length++;
-      break;
-    }
+  while(str[length]!=0) {
     length++;
   }
+
   return length;
 }
 
@@ -33,16 +29,16 @@ int length(char str[]){
   If <letter> doesn't  occur in <str> it returns -1
   last('l',"hallo")
 */
-int last(char letter, char str[]){  
-  int pos = -1;
+int last(char letter, char str[]){
   int i;
 
-  for(i = 0; i < sizeof(str); i++){
+  for(i = length(str); i >= 0; i--){
     if(str[i] == letter){
-      pos = i;
+      return i;
     }
   }
-  return pos;
+
+  return -1;
 }
 
 
@@ -50,10 +46,10 @@ int last(char letter, char str[]){
   Calculates the (one-based) first position of a character <letter> in
   a string <str>
   If <letter> doesn't  occur in <str> it returns -1
-  first('a', "hallo") --> 2 
+  first('a', "hallo") --> 2
 */
 int first(char letter, char str[]){
-  int i;  
+  int i;
 
   for(i = 0; i < sizeof(str); i++){
     if(str[i] == letter){
@@ -127,7 +123,7 @@ int substitute(char old, char new, char str[]){
 
   char hallo[] = "HAllo"
   string2lower(hallo) --> 2 and hallo == "hallo"
-  
+
 */
 int string2lower(char str[]){
   return 0;
@@ -140,40 +136,40 @@ int string2lower(char str[]){
 int main(int argc, char *argv[]){
 
   // your declaration of string test_string and stuff
-  char hallo_string[10] = "Hallo";
+  char test_string[10] = "Hallo";
   char empty_string[10] = "";
-  
+
   /*
 	length of string
 	----------------
   */
-  printf( "length of test-string \"%s\": %d\n", hallo_string, length(hallo_string));
+  printf( "length of test-string \"%s\": %d\n", test_string, length(test_string));
   printf( "length of empty-string \"%s\": %d\n", empty_string, length(empty_string));
-    
-  
-  
-  /*
 
-	last character
-	--------------
-	
-  printf( "Last occurence of character %c in test-string \"%s\": %d\n", 'l', test_string, . . .
-  */
-  
+
+
+
+
+	/* last character */
+	/* -------------- */
+
+  printf( "Last occurence of character %c in test-string \"%s\": %d\n", 'l', test_string, last('l', test_string) );
+  printf( "Last occurence of character %c in empty-string \"%s\": %d\n", 'l', empty_string, last('l', empty_string) );
+
   /*
 	first character
 	--------------
 
   printf( "first occurence of character %c in test-string \"%s\": %d\n" . . .
   */
-  
+
   /*
 	numbers of character
 	--------------------
 
   printf( "Count of character  . . .
   */
-  
+
 
 
   /*
@@ -182,9 +178,9 @@ int main(int argc, char *argv[]){
 	- character distribution of a string
 	- substitution of char in string
 	- HaLo -> halo
-	
+
    */
 
-  
+
   return 0;
 }
