@@ -31,14 +31,14 @@ int length(char str[]){
 */
 int last(char letter, char str[]){
   int i;
+  int pos = -1;
 
-  for(i = length(str); i >= 0; i--){
+  for(i=0; str[i] != 0; i++){
     if(str[i] == letter){
-      return i;
+      pos = i+1;
     }
   }
-
-  return -1;
+  return pos;
 }
 
 
@@ -51,9 +51,9 @@ int last(char letter, char str[]){
 int first(char letter, char str[]){
   int i;
 
-  for(i = 0; i < sizeof(str); i++){
+  for(i=0; str[i] != 0; i++){
     if(str[i] == letter){
-      return i;
+      return i+1;
     }
   }
   return -1;
@@ -65,11 +65,11 @@ int first(char letter, char str[]){
   count('l', "hallo") --> 2
 */
 int count(char t, char s[]){
-  int counter = 0;
   int i;
+  int counter = 0;
 
-  for(i = 0; i<sizeof(s); i++){
-    if(s[i]==t){
+  for(i=0; s[i] != 0; i++){
+    if(s[i] == t){
       counter++;
     }
   }
@@ -156,19 +156,18 @@ int main(int argc, char *argv[]){
   printf( "Last occurence of character %c in test-string \"%s\": %d\n", 'l', test_string, last('l', test_string) );
   printf( "Last occurence of character %c in empty-string \"%s\": %d\n", 'l', empty_string, last('l', empty_string) );
 
-  /*
-	first character
-	--------------
 
-  printf( "first occurence of character %c in test-string \"%s\": %d\n" . . .
-  */
+	/* first character */
+	/* -------------- */
 
-  /*
-	numbers of character
-	--------------------
+  printf( "first occurence of character %c in test-string \"%s\": %d\n", 'l', test_string, first('l', test_string) );
+  printf( "first occurence of character %c in empty-string \"%s\": %d\n", 'l', empty_string, first('l', empty_string) );
 
-  printf( "Count of character  . . .
-  */
+
+	/* numbers of character */
+	/* -------------------- */
+
+  printf( "Count occurence of character %c in test-string \"%s\": %d\n", 'l', test_string, count('l', test_string) );
 
 
 
