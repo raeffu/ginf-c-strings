@@ -137,6 +137,7 @@ int main(int argc, char *argv[]){
 
   // your declaration of string test_string and stuff
   char test_string[10] = "Hallo";
+  char long_string[100] = "This is a very long string";
   char empty_string[10] = "";
 
   /*
@@ -145,6 +146,7 @@ int main(int argc, char *argv[]){
   */
   printf( "length of test-string \"%s\": %d\n", test_string, length(test_string));
   printf( "length of empty-string \"%s\": %d\n", empty_string, length(empty_string));
+  printf( "length of long-string \"%s\": %d\n", long_string, length(long_string));
 
 
 
@@ -155,6 +157,7 @@ int main(int argc, char *argv[]){
 
   printf( "Last occurence of character %c in test-string \"%s\": %d\n", 'l', test_string, last('l', test_string) );
   printf( "Last occurence of character %c in empty-string \"%s\": %d\n", 'l', empty_string, last('l', empty_string) );
+  printf( "Last occurence of character %c in long-string \"%s\": %d\n", 'l', long_string, last('l', long_string) );
 
 
 	/* first character */
@@ -162,14 +165,14 @@ int main(int argc, char *argv[]){
 
   printf( "first occurence of character %c in test-string \"%s\": %d\n", 'l', test_string, first('l', test_string) );
   printf( "first occurence of character %c in empty-string \"%s\": %d\n", 'l', empty_string, first('l', empty_string) );
+  printf( "first occurence of character %c in long-string \"%s\": %d\n", 'l', long_string, first('l', long_string) );
 
 
 	/* numbers of character */
 	/* -------------------- */
 
   printf( "Count occurence of character %c in test-string \"%s\": %d\n", 'l', test_string, count('l', test_string) );
-
-
+  printf( "Count occurence of character %c in long-string \"%s\": %d\n", 'l', long_string, count('l', long_string) );
 
   /*
 

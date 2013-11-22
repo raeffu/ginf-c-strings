@@ -311,19 +311,31 @@ string2lower:
 	.string	"length of empty-string \"%s\": %d\n"
 	.align 4
 .LC2:
-	.string	"Last occurence of character %c in test-string \"%s\": %d\n"
+	.string	"length of long-string \"%s\": %d\n"
 	.align 4
 .LC3:
-	.string	"Last occurence of character %c in empty-string \"%s\": %d\n"
+	.string	"Last occurence of character %c in test-string \"%s\": %d\n"
 	.align 4
 .LC4:
-	.string	"first occurence of character %c in test-string \"%s\": %d\n"
+	.string	"Last occurence of character %c in empty-string \"%s\": %d\n"
 	.align 4
 .LC5:
-	.string	"first occurence of character %c in empty-string \"%s\": %d\n"
+	.string	"Last occurence of character %c in long-string \"%s\": %d\n"
 	.align 4
 .LC6:
+	.string	"first occurence of character %c in test-string \"%s\": %d\n"
+	.align 4
+.LC7:
+	.string	"first occurence of character %c in empty-string \"%s\": %d\n"
+	.align 4
+.LC8:
+	.string	"first occurence of character %c in long-string \"%s\": %d\n"
+	.align 4
+.LC9:
 	.string	"Count occurence of character %c in test-string \"%s\": %d\n"
+	.align 4
+.LC10:
+	.string	"Count occurence of character %c in long-string \"%s\": %d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -336,104 +348,173 @@ main:
 	.cfi_offset 5, -8
 	movl	%esp, %ebp
 	.cfi_def_cfa_register 5
+	pushl	%edi
+	pushl	%esi
+	pushl	%ebx
 	andl	$-16, %esp
-	subl	$64, %esp
+	subl	$160, %esp
+	.cfi_offset 7, -12
+	.cfi_offset 6, -16
+	.cfi_offset 3, -20
 	movl	12(%ebp), %eax
 	movl	%eax, 28(%esp)
 	.loc 1 136 0
 	movl	%gs:20, %eax
-	movl	%eax, 60(%esp)
+	movl	%eax, 156(%esp)
 	xorl	%eax, %eax
 	.loc 1 139 0
-	movl	$1819042120, 40(%esp)
-	movl	$111, 44(%esp)
-	movw	$0, 48(%esp)
+	movl	$1819042120, 36(%esp)
+	movl	$111, 40(%esp)
+	movw	$0, 44(%esp)
 	.loc 1 140 0
+	movl	$1936287828, 56(%esp)
+	movl	$544434464, 60(%esp)
+	movl	$1702240353, 64(%esp)
+	movl	$1814067570, 68(%esp)
+	movl	$543649391, 72(%esp)
+	movl	$1769108595, 76(%esp)
+	movl	$26478, 80(%esp)
+	leal	84(%esp), %ebx
+	movl	$0, %eax
+	movl	$18, %edx
+	movl	%ebx, %edi
+	movl	%edx, %ecx
+	rep stosl
+	.loc 1 141 0
+	movl	$0, 46(%esp)
 	movl	$0, 50(%esp)
-	movl	$0, 54(%esp)
-	movw	$0, 58(%esp)
-	.loc 1 146 0
-	leal	40(%esp), %eax
+	movw	$0, 54(%esp)
+	.loc 1 147 0
+	leal	36(%esp), %eax
 	movl	%eax, (%esp)
 	call	length
 	movl	%eax, 8(%esp)
-	leal	40(%esp), %eax
+	leal	36(%esp), %eax
 	movl	%eax, 4(%esp)
 	movl	$.LC0, (%esp)
 	call	printf
-	.loc 1 147 0
-	leal	50(%esp), %eax
+	.loc 1 148 0
+	leal	46(%esp), %eax
 	movl	%eax, (%esp)
 	call	length
 	movl	%eax, 8(%esp)
-	leal	50(%esp), %eax
+	leal	46(%esp), %eax
 	movl	%eax, 4(%esp)
 	movl	$.LC1, (%esp)
 	call	printf
-	.loc 1 156 0
-	leal	40(%esp), %eax
-	movl	%eax, 4(%esp)
-	movl	$108, (%esp)
-	call	last
-	movl	%eax, 12(%esp)
-	leal	40(%esp), %eax
+	.loc 1 149 0
+	leal	56(%esp), %eax
+	movl	%eax, (%esp)
+	call	length
 	movl	%eax, 8(%esp)
-	movl	$108, 4(%esp)
+	leal	56(%esp), %eax
+	movl	%eax, 4(%esp)
 	movl	$.LC2, (%esp)
 	call	printf
-	.loc 1 157 0
-	leal	50(%esp), %eax
+	.loc 1 158 0
+	leal	36(%esp), %eax
 	movl	%eax, 4(%esp)
 	movl	$108, (%esp)
 	call	last
 	movl	%eax, 12(%esp)
-	leal	50(%esp), %eax
+	leal	36(%esp), %eax
 	movl	%eax, 8(%esp)
 	movl	$108, 4(%esp)
 	movl	$.LC3, (%esp)
 	call	printf
-	.loc 1 163 0
-	leal	40(%esp), %eax
+	.loc 1 159 0
+	leal	46(%esp), %eax
 	movl	%eax, 4(%esp)
 	movl	$108, (%esp)
-	call	first
+	call	last
 	movl	%eax, 12(%esp)
-	leal	40(%esp), %eax
+	leal	46(%esp), %eax
 	movl	%eax, 8(%esp)
 	movl	$108, 4(%esp)
 	movl	$.LC4, (%esp)
 	call	printf
-	.loc 1 164 0
-	leal	50(%esp), %eax
+	.loc 1 160 0
+	leal	56(%esp), %eax
 	movl	%eax, 4(%esp)
 	movl	$108, (%esp)
-	call	first
+	call	last
 	movl	%eax, 12(%esp)
-	leal	50(%esp), %eax
+	leal	56(%esp), %eax
 	movl	%eax, 8(%esp)
 	movl	$108, 4(%esp)
 	movl	$.LC5, (%esp)
 	call	printf
-	.loc 1 170 0
-	leal	40(%esp), %eax
+	.loc 1 166 0
+	leal	36(%esp), %eax
 	movl	%eax, 4(%esp)
 	movl	$108, (%esp)
-	call	count
+	call	first
 	movl	%eax, 12(%esp)
-	leal	40(%esp), %eax
+	leal	36(%esp), %eax
 	movl	%eax, 8(%esp)
 	movl	$108, 4(%esp)
 	movl	$.LC6, (%esp)
 	call	printf
-	.loc 1 184 0
+	.loc 1 167 0
+	leal	46(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$108, (%esp)
+	call	first
+	movl	%eax, 12(%esp)
+	leal	46(%esp), %eax
+	movl	%eax, 8(%esp)
+	movl	$108, 4(%esp)
+	movl	$.LC7, (%esp)
+	call	printf
+	.loc 1 168 0
+	leal	56(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$108, (%esp)
+	call	first
+	movl	%eax, 12(%esp)
+	leal	56(%esp), %eax
+	movl	%eax, 8(%esp)
+	movl	$108, 4(%esp)
+	movl	$.LC8, (%esp)
+	call	printf
+	.loc 1 174 0
+	leal	36(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$108, (%esp)
+	call	count
+	movl	%eax, 12(%esp)
+	leal	36(%esp), %eax
+	movl	%eax, 8(%esp)
+	movl	$108, 4(%esp)
+	movl	$.LC9, (%esp)
+	call	printf
+	.loc 1 175 0
+	leal	56(%esp), %eax
+	movl	%eax, 4(%esp)
+	movl	$108, (%esp)
+	call	count
+	movl	%eax, 12(%esp)
+	leal	56(%esp), %eax
+	movl	%eax, 8(%esp)
+	movl	$108, 4(%esp)
+	movl	$.LC10, (%esp)
+	call	printf
+	.loc 1 187 0
 	movl	$0, %eax
-	.loc 1 185 0
-	movl	60(%esp), %edx
-	xorl	%gs:20, %edx
+	.loc 1 188 0
+	movl	156(%esp), %esi
+	xorl	%gs:20, %esi
 	je	.L32
 	call	__stack_chk_fail
 .L32:
-	leave
+	leal	-12(%ebp), %esp
+	popl	%ebx
+	.cfi_restore 3
+	popl	%esi
+	.cfi_restore 6
+	popl	%edi
+	.cfi_restore 7
+	popl	%ebp
 	.cfi_restore 5
 	.cfi_def_cfa 4, 4
 	ret
@@ -443,15 +524,15 @@ main:
 .Letext0:
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x2e2
+	.long	0x300
 	.value	0x4
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF28
-	.byte	0x1
 	.long	.LASF29
+	.byte	0x1
 	.long	.LASF30
+	.long	.LASF31
 	.long	.Ltext0
 	.long	.Letext0-.Ltext0
 	.long	.Ldebug_line0
@@ -701,7 +782,7 @@ main:
 	.sleb128 4
 	.byte	0
 	.uleb128 0xa
-	.long	.LASF31
+	.long	.LASF32
 	.byte	0x1
 	.byte	0x69
 	.long	.LFB6
@@ -781,7 +862,7 @@ main:
 	.long	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x2d3
+	.long	0x2e1
 	.uleb128 0x8
 	.long	.LASF24
 	.byte	0x1
@@ -794,7 +875,7 @@ main:
 	.long	.LASF25
 	.byte	0x1
 	.byte	0x88
-	.long	0x2d3
+	.long	0x2e1
 	.uleb128 0x2
 	.byte	0x74
 	.sleb128 28
@@ -802,27 +883,42 @@ main:
 	.long	.LASF26
 	.byte	0x1
 	.byte	0x8b
-	.long	0x2d9
+	.long	0x2e7
 	.uleb128 0x2
 	.byte	0x74
-	.sleb128 40
+	.sleb128 36
 	.uleb128 0x7
 	.long	.LASF27
 	.byte	0x1
 	.byte	0x8c
-	.long	0x2d9
+	.long	0x2f7
 	.uleb128 0x2
 	.byte	0x74
-	.sleb128 50
+	.sleb128 56
+	.uleb128 0x7
+	.long	.LASF28
+	.byte	0x1
+	.byte	0x8d
+	.long	0x2e7
+	.uleb128 0x2
+	.byte	0x74
+	.sleb128 46
 	.byte	0
 	.uleb128 0x4
 	.byte	0x4
 	.long	0x72
 	.uleb128 0xc
 	.long	0x78
+	.long	0x2f7
 	.uleb128 0xd
 	.long	0x6b
 	.byte	0x9
+	.byte	0
+	.uleb128 0xe
+	.long	0x78
+	.uleb128 0xd
+	.long	0x6b
+	.byte	0x63
 	.byte	0
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
@@ -1021,6 +1117,8 @@ main:
 	.byte	0x1
 	.uleb128 0x49
 	.uleb128 0x13
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0xd
@@ -1030,6 +1128,13 @@ main:
 	.uleb128 0x13
 	.uleb128 0x2f
 	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0xe
+	.uleb128 0x1
+	.byte	0x1
+	.uleb128 0x49
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.byte	0
@@ -1062,13 +1167,13 @@ main:
 	.string	"substitute"
 .LASF23:
 	.string	"main"
-.LASF28:
+.LASF29:
 	.string	"GNU C 4.8.1 -mtune=generic -march=i686 -g -fstack-protector"
 .LASF6:
 	.string	"long long int"
 .LASF8:
 	.string	"long int"
-.LASF29:
+.LASF30:
 	.string	"strings.c"
 .LASF11:
 	.string	"length"
@@ -1084,7 +1189,7 @@ main:
 	.string	"signed char"
 .LASF7:
 	.string	"long long unsigned int"
-.LASF27:
+.LASF28:
 	.string	"empty_string"
 .LASF0:
 	.string	"unsigned int"
@@ -1102,13 +1207,15 @@ main:
 	.string	"str_a"
 .LASF22:
 	.string	"string2lower"
+.LASF27:
+	.string	"long_string"
 .LASF3:
 	.string	"long unsigned int"
 .LASF15:
 	.string	"count"
-.LASF31:
+.LASF32:
 	.string	"string_distro"
-.LASF30:
+.LASF31:
 	.string	"/home/raeffu/Projects/BFH/c/strings"
 .LASF14:
 	.string	"first"
