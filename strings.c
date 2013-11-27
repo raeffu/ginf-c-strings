@@ -82,7 +82,18 @@ int count(char t, char s[]){
   longest("oans two tres cuatro cinque sitta sabaa thalathatan") --> 41
 */
 int longest(char str[]){
-  return 0;
+  /* int i; */
+  /* int counter; */
+  /* int index; */
+
+  /* for(i=0; str[i] != 0; i++){ */
+  /*   if(str[i] == ' '){ */
+  /*     counter = 0; */
+  /*   } */
+  /*   counter++; */
+  /* } */
+
+return 0;
 }
 
 
